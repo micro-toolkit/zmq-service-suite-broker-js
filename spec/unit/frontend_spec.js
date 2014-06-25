@@ -71,7 +71,7 @@ describe('Frontend', function(){
         log.info.reset();
         target.run();
 
-        expect(log.info).toHaveBeenCalled();
+        expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.frontend);
       });
 
     });
@@ -255,7 +255,7 @@ describe('Frontend', function(){
       it('logging stoping activity', function(){
         log.info.reset();
         target.stop();
-        expect(log.info).toHaveBeenCalled();
+        expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.frontend);
       });
 
     });
