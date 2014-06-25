@@ -216,7 +216,7 @@ describe('Backend', function(){
           spyOn(zmq, 'socket').andReturn(socketMock);
           log.debug.reset();
           target.run();
-          expect(log.debug).toHaveBeenCalledWith("backend received: %s", up.toString());
+          expect(log.debug).toHaveBeenCalledWith(up.toString());
         });
 
         describe('on UP', function(){
