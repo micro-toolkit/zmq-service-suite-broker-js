@@ -17,7 +17,7 @@ describe('Backend', function(){
       STATUS_FRAME   = 6,
       PAYLOAD_FRAME  = 7;
 
-  var heartbeat, up, down, config, target, socketMock, smi;
+  var config, target, socketMock, smi;
 
   beforeEach(function(){
     spyOn(log, 'trace').andReturn(Function.apply());
@@ -441,7 +441,7 @@ describe('Backend', function(){
 
       spyOn(zmq, 'socket').andReturn(socketMock);
       spyOn(socketMock, 'send');
-      
+
       target.run();
     });
 
