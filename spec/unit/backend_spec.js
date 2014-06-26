@@ -432,7 +432,9 @@ describe('Backend', function(){
     var frames;
 
     beforeEach(function(){
+      // on send we need the routing frame on 0
       frames = [
+        null,
         null,
         null,
         null,
@@ -453,6 +455,7 @@ describe('Backend', function(){
       target.send(frames);
 
       var expected = [
+        null,
         null,
         null,
         "REQ",
