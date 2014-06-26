@@ -215,6 +215,24 @@ describe('Frontend', function(){
           });
         });
 
+        describe('when protocol message is invalid', function(){
+
+          it('returns status 404', function(){
+            socketMock.on = function(type, callback){
+              if(type === 'message'){
+                frames[ADDRESS_FRAME] = null;
+                callback.apply(null, frames);
+              }
+            };
+
+            spyOn(zmq, 'socket').andReturn(socketMock);
+            log.error.reset();
+            target.run();
+
+            expect(log.error).toHaveBeenCalled();
+          });
+        });
+
       });
 
       it('routes to service on valid address', function() {
