@@ -3,6 +3,7 @@ describe('Backend', function(){
   var log = require('../../../core/lib/logger'),
       Message = require('../../../core/lib/message'),
       zmq = require('zmq'),
+      Buffer = require('buffer').Buffer,
       msgpack = require('msgpack-js'),
       Backend = require('../../lib/backend'),
       SMI = require('../../lib/smi');
@@ -189,7 +190,10 @@ describe('Backend', function(){
           });
           socketMock.on = function(type, callback){
             if(type === 'message'){
-              callback.apply(null, up.toFrames());
+              var frames = up.toFrames();
+              // emulate nodejs zeromq send
+              frames[TYPE_FRAME] = new Buffer(String(frames[TYPE_FRAME], 'utf8'));
+              callback.apply(null, frames);
             }
           };
           socketMock.send = function(frames){
