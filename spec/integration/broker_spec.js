@@ -3,7 +3,8 @@ describe('Broker Integration', function(){
 
   var zmq = require('zmq'),
       _ = require('lodash'),
-      log = require('../../../core/lib/logger'),
+      Logger = require('logger-facade-nodejs'),
+      LoggerConsolePlugin = require('logger-facade-console-plugin-nodejs'),
       Message = require('../../../core/lib/message'),
       Broker = require('../../lib/broker');
 
@@ -19,13 +20,6 @@ describe('Broker Integration', function(){
   var target, config, serviceSocket, clientSocket;
 
   beforeEach(function(){
-    spyOn(log, 'trace').andReturn(Function.apply());
-    spyOn(log, 'debug').andReturn(Function.apply());
-    spyOn(log, 'info').andReturn(Function.apply());
-    spyOn(log, 'warn').andReturn(Function.apply());
-    spyOn(log, 'error').andReturn(Function.apply());
-
-    log.level = log.INFO_LEVEL;
 
     jasmine.Clock.useMock();
 

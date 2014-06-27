@@ -1,5 +1,6 @@
 describe("ServiceManagementInterface", function(){
-  var log = require('../../../core/lib/logger'),
+
+  var Logger = require('logger-facade-nodejs'),
       Message = require('../../../core/lib/message'),
       uuid = require('uuid'),
       SMI = require('../../lib/smi');
@@ -15,15 +16,12 @@ describe("ServiceManagementInterface", function(){
     updateInterval: 100
   };
 
-  var heartbeat, up, down;
+  var heartbeat, up, down, log;
 
   beforeEach(function(){
     spyOn(uuid, 'v1').andReturn("uuid");
-    spyOn(log, 'trace').andReturn(Function.apply());
-    spyOn(log, 'debug').andReturn(Function.apply());
-    spyOn(log, 'info').andReturn(Function.apply());
-    spyOn(log, 'warn').andReturn(Function.apply());
-    spyOn(log, 'error').andReturn(Function.apply());
+    log = Logger.getLogger('SMISpec');
+    spyOn(Logger, 'getLogger').andReturn(log);
 
     // TODO: set on helpers for all tests
     // issue with clearTimeout/clearInterval: https://github.com/mhevery/jasmine-node/issues/276
@@ -50,16 +48,20 @@ describe("ServiceManagementInterface", function(){
     jasmine.Clock.useMock();
 
     target = new SMI(config);
-    target.run();
   });
 
   describe('#run', function(){
 
     it('logs start info', function(){
+
+      spyOn(log, 'info');
+      target.run();
       expect(log.info).toHaveBeenCalled();
     });
 
     it('register interval based execution of service refresh', function(){
+
+      target.run();
       target.up(up);
 
       // trigger first ttl services refresh
@@ -73,9 +75,15 @@ describe("ServiceManagementInterface", function(){
     });
   });
 
-  describe('#run', function(){
+  describe('#stop', function(){
+
+    beforeEach(function(){
+      target.run();
+    });
 
     it('logs stop info', function(){
+      spyOn(log, 'info');
+      target.stop();
       expect(log.info).toHaveBeenCalled();
     });
 
@@ -112,8 +120,8 @@ describe("ServiceManagementInterface", function(){
 
         it('logs warning info when service is registered', function(){
           target.up(up);
+          spyOn(log, 'warn');
           target.up(up);
-
           expect(log.warn).toHaveBeenCalled();
         });
 
@@ -148,6 +156,7 @@ describe("ServiceManagementInterface", function(){
 
         it('logs warning when service is not registered', function(){
           target.down(down);
+          spyOn(log, 'warn');
           target.down(down);
 
           expect(log.warn).toHaveBeenCalled();
@@ -159,6 +168,10 @@ describe("ServiceManagementInterface", function(){
 
   describe('#heartbeat', function(){
 
+    beforeEach(function(){
+      target.run();
+    });
+
     describe('when instance not registered execute registration', function() {
 
       describe('with success', function(){
@@ -169,6 +182,7 @@ describe("ServiceManagementInterface", function(){
         });
 
         it('logs info about service registration', function(){
+          spyOn(log, 'info');
           target.heartbeat(heartbeat);
           expect(log.info).toHaveBeenCalled();
         });

@@ -1,16 +1,13 @@
 describe('Broker', function(){
 
-  var log = require('../../../core/lib/logger'),
+  var Logger = require('logger-facade-nodejs'),
       Broker = require('../../lib/broker');
 
-  var config, target, smiMock, frontendMock, backendMock;
+  var config, target, smiMock, frontendMock, backendMock, log;
 
   beforeEach(function(){
-    spyOn(log, 'trace').andReturn(Function.apply());
-    spyOn(log, 'debug').andReturn(Function.apply());
-    spyOn(log, 'info').andReturn(Function.apply());
-    spyOn(log, 'warn').andReturn(Function.apply());
-    spyOn(log, 'error').andReturn(Function.apply());
+    log = Logger.getLogger('Broker');
+    spyOn(Logger, 'getLogger').andReturn(log);
 
     jasmine.Clock.useMock();
 
@@ -60,7 +57,7 @@ describe('Broker', function(){
     });
 
     it('logging starting activity', function(){
-      log.info.reset();
+      spyOn(log, 'info');
       target.run();
       expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.version);
     });
@@ -93,7 +90,7 @@ describe('Broker', function(){
 
       it('logging stoping activity', function(){
         target.run();
-        log.info.reset();
+        spyOn(log, 'info');
         target.stop();
         expect(log.info).toHaveBeenCalled();
       });

@@ -1,6 +1,6 @@
 describe('Backend', function(){
 
-  var log = require('../../../core/lib/logger'),
+  var Logger = require('logger-facade-nodejs'),
       Message = require('../../../core/lib/message'),
       zmq = require('zmq'),
       Buffer = require('buffer').Buffer,
@@ -18,16 +18,11 @@ describe('Backend', function(){
       STATUS_FRAME   = 6,
       PAYLOAD_FRAME  = 7;
 
-  var config, target, socketMock, smi;
+  var config, target, socketMock, smi, log;
 
   beforeEach(function(){
-    spyOn(log, 'trace').andReturn(Function.apply());
-    spyOn(log, 'debug').andReturn(Function.apply());
-    spyOn(log, 'info').andReturn(Function.apply());
-    spyOn(log, 'warn').andReturn(Function.apply());
-    spyOn(log, 'error').andReturn(Function.apply());
-
-    log.level = log.INFO_LEVEL;
+    log = Logger.getLogger('BackendSpec');
+    spyOn(Logger, 'getLogger').andReturn(log);
 
     jasmine.Clock.useMock();
 
@@ -69,9 +64,8 @@ describe('Backend', function(){
       });
 
       it('logging starting activity', function(){
-        log.info.reset();
+        spyOn(log,'info');
         target.run();
-
         expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.backend);
       });
 
@@ -82,7 +76,7 @@ describe('Backend', function(){
       describe('on zmq error', function(){
 
         it('logs an error', function(){
-          log.error.reset();
+          spyOn(log,'error');
           socketMock.on = function(type, callback){
             if(type === 'error'){
               callback(new Error("zmq"));
@@ -157,6 +151,7 @@ describe('Backend', function(){
           });
 
           it('logs an error message', function(){
+            spyOn(log, 'error');
             spyOn(zmq, 'socket').andReturn(socketMock);
             target.run();
             expect(log.error).toHaveBeenCalled();
@@ -203,24 +198,6 @@ describe('Backend', function(){
 
           spyOn(zmq, 'socket').andReturn(socketMock);
           target.run();
-        });
-
-        it('logs received message in debug', function(){
-          log.level = log.DEBUG_LEVEL;
-          spyOn(smi, 'up').andCallFake(function(msg){
-            msg.status = 404;
-            return msg;
-          });
-          socketMock.on = function(type, callback){
-            if(type === 'message'){
-              callback.apply(null, up.toFrames());
-            }
-          };
-
-          spyOn(zmq, 'socket').andReturn(socketMock);
-          log.debug.reset();
-          target.run();
-          expect(log.debug).toHaveBeenCalledWith(up.toString());
         });
 
         describe('on UP', function(){
@@ -351,9 +328,11 @@ describe('Backend', function(){
 
         it('logs an error message', function(){
           spyOn(zmq, 'socket').andReturn(socketMock);
+          spyOn(log, 'error');
           target.run();
           expect(log.error).toHaveBeenCalled();
         });
+
       });
 
     });
@@ -383,7 +362,7 @@ describe('Backend', function(){
 
       it('logs an error when client identity is not valid', function(){
 
-        log.error.reset();
+        spyOn(log, 'error');
         target.run();
         expect(log.error).toHaveBeenCalled();
       });
@@ -418,7 +397,7 @@ describe('Backend', function(){
       });
 
       it('logging stoping activity', function(){
-        log.info.reset();
+        spyOn(log, 'info');
         target.stop();
         expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.backend);
       });
@@ -469,6 +448,7 @@ describe('Backend', function(){
     });
 
     it('logs request info', function(){
+      spyOn(log, 'info');
       target.send(frames);
       expect(log.info).toHaveBeenCalled();
     });

@@ -1,6 +1,6 @@
 describe('Frontend', function(){
 
-  var log = require('../../../core/lib/logger'),
+  var Logger = require('logger-facade-nodejs'),
       Message = require('../../../core/lib/message'),
       zmq = require('zmq'),
       msgpack = require('msgpack-js'),
@@ -17,16 +17,11 @@ describe('Frontend', function(){
       STATUS_FRAME   = 6,
       PAYLOAD_FRAME  = 7;
 
-  var config, target, socketMock, smi;
+  var config, target, socketMock, smi, log;
 
   beforeEach(function(){
-    spyOn(log, 'trace').andReturn(Function.apply());
-    spyOn(log, 'debug').andReturn(Function.apply());
-    spyOn(log, 'info').andReturn(Function.apply());
-    spyOn(log, 'warn').andReturn(Function.apply());
-    spyOn(log, 'error').andReturn(Function.apply());
-
-    log.level = log.INFO_LEVEL;
+    log = Logger.getLogger('FrontendSpec');
+    spyOn(Logger, 'getLogger').andReturn(log);
 
     jasmine.Clock.useMock();
 
@@ -68,9 +63,8 @@ describe('Frontend', function(){
       });
 
       it('logging starting activity', function(){
-        log.info.reset();
+        spyOn(log, 'info');
         target.run();
-
         expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.frontend);
       });
 
@@ -103,7 +97,7 @@ describe('Frontend', function(){
         describe('on zmq error', function(){
 
           it('logs an error', function(){
-            log.error.reset();
+
             socketMock.on = function(type, callback){
               if(type === 'error'){
                 callback(new Error("zmq"));
@@ -111,35 +105,12 @@ describe('Frontend', function(){
             };
 
             spyOn(zmq, 'socket').andReturn(socketMock);
+            spyOn(log, 'error');
 
             target.run();
 
             expect(log.error).toHaveBeenCalled();
           });
-        });
-
-        it('logs debug message with frames on reply', function(){
-          log.level = log.DEBUG_LEVEL;
-
-          spyOn(Message, 'parse').andReturn({
-            toString: function(){ return "message"; },
-            toFrames: Function.apply()
-          });
-
-          frames[IDENTITY_FRAME] = null;
-
-          socketMock.on = function(type, callback){
-            if(type === 'message'){
-              callback.apply(null, frames);
-            }
-          };
-
-          spyOn(zmq, 'socket').andReturn(socketMock);
-
-          log.debug.reset();
-          target.run();
-
-          expect(log.debug).toHaveBeenCalledWith("message");
         });
 
         describe('when without identity', function(){
@@ -173,7 +144,7 @@ describe('Frontend', function(){
             };
 
             spyOn(zmq, 'socket').andReturn(socketMock);
-            log.error.reset();
+            spyOn(log, 'error');
 
             target.run();
 
@@ -200,7 +171,6 @@ describe('Frontend', function(){
           });
 
           it('logs an error', function(){
-            log.error.reset();
             socketMock.on = function(type, callback){
               if(type === 'message'){
                 callback.apply(null, frames);
@@ -208,6 +178,7 @@ describe('Frontend', function(){
             };
 
             spyOn(zmq, 'socket').andReturn(socketMock);
+            spyOn(log, 'error');
 
             target.run();
 
@@ -226,7 +197,7 @@ describe('Frontend', function(){
             };
 
             spyOn(zmq, 'socket').andReturn(socketMock);
-            log.error.reset();
+            spyOn(log, 'error');
             target.run();
 
             expect(log.error).toHaveBeenCalled();
@@ -271,7 +242,7 @@ describe('Frontend', function(){
       });
 
       it('logging stoping activity', function(){
-        log.info.reset();
+        spyOn(log, 'info');
         target.stop();
         expect(log.info).toHaveBeenCalledWith(jasmine.any(String), config.frontend);
       });
@@ -298,9 +269,6 @@ describe('Frontend', function(){
 
       spyOn(zmq, 'socket').andReturn(socketMock);
       spyOn(socketMock, 'send');
-      spyOn(Message, 'parse').andReturn({
-        toString: function(){ return "message"; }
-      });
 
       target.run();
     });
@@ -322,14 +290,9 @@ describe('Frontend', function(){
     });
 
     it('logs reply info', function(){
+      spyOn(log, 'info');
       target.send(frames);
       expect(log.info).toHaveBeenCalled();
-    });
-
-    it('logs debug message with frames', function(){
-      log.level = log.DEBUG_LEVEL;
-      target.send(frames);
-      expect(log.debug).toHaveBeenCalledWith("message");
     });
 
   });
