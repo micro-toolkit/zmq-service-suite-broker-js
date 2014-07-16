@@ -1,7 +1,7 @@
 describe("ServiceManagementInterface", function(){
 
   var Logger = require('logger-facade-nodejs'),
-      Message = require('../../../core/lib/message'),
+      Message = require('zmq-service-suite-message'),
       uuid = require('uuid'),
       SMI = require('../../lib/smi');
 

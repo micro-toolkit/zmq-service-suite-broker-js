@@ -5,7 +5,7 @@ describe('Broker Integration', function(){
       _ = require('lodash'),
       Logger = require('logger-facade-nodejs'),
       LoggerConsolePlugin = require('logger-facade-console-plugin-nodejs'),
-      Message = require('../../../core/lib/message'),
+      Message = require('zmq-service-suite-message'),
       Broker = require('../../lib/broker');
 
   var IDENTITY_FRAME = 0,
