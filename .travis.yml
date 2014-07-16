@@ -12,9 +12,9 @@ branches:
     - master
 script:
   - npm test
-# after_success:
-#   - codeclimate < ./coverage/lcov.info
-# addons:
-#   code_climate:
-#     repo_token:
-#       secure: RP+Tgf2TzILdLAVtXJncw+SWSHjnEGhJgSvW8CIgaNQYfXb6NNXxPqorheEo2zfN8KoaC5MDR00DfovM1Ub+z3dxvc/VW/liUrlx5xfCh9tBhpQzCt6ajjEyYTGlo3w6SMpHHgNiwY59hcRxPfOTKkro/FM13uGPVGnr/UkE+N4=
+after_success:
+  - codeclimate < ./coverage/lcov.info
+addons:
+  code_climate:
+    repo_token:
+      secure: nrisfBzNMixOfW8oMtziUlwwY+2+i83Nhhu7O+EXM4+Pk38s7bitYnYDjHu7LSsUZ5rziMsUUiyi8g7yIn6Rkn43jh3z6bHHPt+bzMUT5W0BTrxJP+JnjEMBZ+K206mqkrKdv4c0xFVtKqYLLZ6nFfDw3rsWkeMGHEFm2Iebs+c=
