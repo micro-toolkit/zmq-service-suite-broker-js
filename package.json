@@ -1,0 +1,56 @@
+{
+  "name": "zmq-service-suite-broker",
+  "version": "0.0.0",
+  "description": "0MQ Service oriented Suite - Broker",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "grunt jshint",
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pjanuario/zmq-service-suite-broker-js.git"
+  },
+  "keywords": [
+    "0MQ",
+    "ZeroMQ",
+    "SOA"
+  ],
+  "author": {
+    "name": "Pedro Januário",
+    "url": "http://shared-mind.tumblr.com"
+  },
+  "contributors": [],
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/pjanuario/zmq-service-suite-broker-js/issues"
+  },
+  "homepage": "https://github.com/pjanuario/zmq-service-suite-broker-js",
+  "devDependencies": {
+    "codeclimate-test-reporter": "0.0.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-env": "~0.4.1",
+    "grunt-jasmine-node-coverage-validation": "0.0.4",
+    "pre-git": "0.0.16"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "logger-facade-console-plugin-nodejs": "0.0.1",
+    "logger-facade-nodejs": "0.0.2",
+    "msgpack-js": "~0.3.0",
+    "uuid": "~1.4.1",
+    "zmq": "^2.7.0",
+    "zmq-service-suite-message": "0.0.2"
+  },
+  "engines": {
+    "node": ">=0.10.28"
+  },
+  "pre-commit": [
+    "npm test"
+  ],
+  "pre-push": [
+    "npm test"
+  ]
+}
