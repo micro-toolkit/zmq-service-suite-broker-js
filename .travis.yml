@@ -1,0 +1,20 @@
+language: node_js
+services:
+node_js:
+  - 0.10
+before_install:
+  - sudo apt-get install libzmq3-dev
+before_script:
+  - npm install -g grunt-cli
+  - npm install -d
+branches:
+  only:
+    - master
+script:
+  - npm test
+# after_success:
+#   - codeclimate < ./coverage/lcov.info
+# addons:
+#   code_climate:
+#     repo_token:
+#       secure: RP+Tgf2TzILdLAVtXJncw+SWSHjnEGhJgSvW8CIgaNQYfXb6NNXxPqorheEo2zfN8KoaC5MDR00DfovM1Ub+z3dxvc/VW/liUrlx5xfCh9tBhpQzCt6ajjEyYTGlo3w6SMpHHgNiwY59hcRxPfOTKkro/FM13uGPVGnr/UkE+N4=
