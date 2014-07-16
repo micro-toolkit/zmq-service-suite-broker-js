@@ -1,0 +1,59 @@
+{
+  "400": {
+    "code": 400,
+    "body": {
+      "developerMessage": "The request cannot be fulfilled due to bad syntax.",
+      "userMessage": "An error occured",
+      "errorCode": 400
+    }
+  },
+  "401": {
+    "code": 401,
+    "body": {
+      "developerMessage": "User authentication token has expired or is missing",
+      "userMessage": "This resource is only available after logging in.",
+      "errorCode": 401
+    }
+  },
+  "403": {
+    "code": 403,
+    "body": {
+      "developerMessage": "User does not have enough privileges to access this resource.",
+      "userMessage": "You do not have access to this resource.",
+      "errorCode": 403
+    },
+    "headers": {}
+  },
+   "404": {
+    "code": 404,
+    "body": {
+      "developerMessage": "The resource could not be found.",
+      "userMessage": "The content you requested was not found.",
+      "errorCode": 404
+    }
+  },
+   "429": {
+    "code": 429,
+    "body": {
+      "developerMessage": "You have sent too many requests in a given amount of time.",
+      "userMessage": "Please wait a while before trying to access this content again",
+      "errorCode": 429
+    }
+  },
+  "500": {
+    "code": 500,
+    "body": {
+      "developerMessage": "There was an error while processing this request. There is probably something wrong with the API server.",
+      "userMessage": "There was an error while processing this request.",
+      "errorCode": 500
+    }
+  },
+  "599": {
+    "code": 599,
+    "body": {
+      "developerMessage": "Connection timeout while processing this request.",
+      "userMessage": "Connection timeout while processing this request.",
+      "errorCode": 599
+    }
+  }
+}
