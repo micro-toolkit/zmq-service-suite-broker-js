@@ -13,6 +13,10 @@ The broker is slipt in three main components:
 * frontend: Receives requests and replies from clients;
 * smi: Service management interface, it handles service lifecycle with smi requests: up, down, heartbeat.
 
+## Running Broker binary
+
+    $ bin/zss-broker
+
 
 ## Contributing
 
