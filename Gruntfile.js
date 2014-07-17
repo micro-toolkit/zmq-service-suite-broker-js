@@ -108,6 +108,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-env');
+  grunt.loadNpmTasks('grunt-bump');
 
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('unit', ['env:test', 'jasmine_node:unit']);
