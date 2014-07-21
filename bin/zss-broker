@@ -9,7 +9,7 @@
   var config = {
     level: 'info',
     timeFormat: 'YYYY-MM-DD HH:mm:ss',
-    messageFormat: '%time | %logger::%level - %msg'
+    messageFormat: '%time | %level | %logger - %msg'
   };
 
   var plugin = new LoggerConsolePlugin(config);
