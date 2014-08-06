@@ -1,1 +1,1 @@
-module.exports = require('lib/broker');
+module.exports = require('./lib/broker');
