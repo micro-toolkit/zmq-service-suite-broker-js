@@ -34,16 +34,20 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "~0.4.1",
     "grunt-jasmine-node-coverage-validation": "0.0.4",
-    "pre-git": "0.0.16"
+    "pre-git": "0.0.16",
+    "logger-facade-console-plugin-nodejs": "0.0.1",
+    "logger-facade-nodejs": "0.0.2"
   },
   "dependencies": {
     "lodash": "^2.4.1",
-    "logger-facade-console-plugin-nodejs": "0.0.1",
-    "logger-facade-nodejs": "0.0.2",
     "msgpack-js": "~0.3.0",
     "uuid": "~1.4.1",
     "zmq": "^2.7.0",
     "zmq-service-suite-message": "0.0.2"
+  },
+  "peerDependencies": {
+    "logger-facade-console-plugin-nodejs": "0.0.1",
+    "logger-facade-nodejs": "0.0.2"
   },
   "engines": {
     "node": ">=0.10.28"
