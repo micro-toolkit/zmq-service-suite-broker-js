@@ -29,6 +29,15 @@ describe('Broker', function(){
     target = new Broker(config, smiMock, frontendMock, backendMock);
   });
 
+  describe("#version", function(){
+
+    it('returns package version', function(){
+      var packageJson = require('../../package');
+      expect(target.version).toEqual(packageJson.version);
+    });
+
+  });
+
   describe("#run", function(){
 
     it('starts broker without service dependencies', function(){
