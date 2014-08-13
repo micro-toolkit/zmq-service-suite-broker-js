@@ -172,6 +172,11 @@ describe("ServiceManagementInterface", function(){
       target.run();
     });
 
+    it('returns sucessfully even when called from different context', function() {
+      var result = target.heartbeat.call(null, heartbeat);
+      expect(result.status).toBe(200);
+    });
+
     describe('when instance not registered execute registration', function() {
 
       describe('with success', function(){
