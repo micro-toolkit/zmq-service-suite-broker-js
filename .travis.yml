@@ -3,6 +3,7 @@ language: node_js
 services:
 node_js:
   - 0.10
+  - 4.2
 before_script:
   - npm install -g grunt-cli
   - npm install -d
