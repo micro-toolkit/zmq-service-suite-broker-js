@@ -1,31 +1,28 @@
 #!/usr/bin/env node
+var Broker = require('../lib/broker');
+var Logger = require('logger-facade-nodejs');
+var LoggerConsolePlugin = require('logger-facade-console-plugin-nodejs');
 
-(function(){
-  var Broker = require('../lib/broker');
-  var Logger = require('logger-facade-nodejs');
-  var LoggerConsolePlugin = require('logger-facade-console-plugin-nodejs');
+// this is the default config
+var config = {
+  level: 'info',
+  timeFormat: 'YYYY-MM-DD HH:mm:ss',
+  messageFormat: '%time | %level | %logger - %msg'
+};
 
-  // this is the default config
-  var config = {
-    level: 'info',
-    timeFormat: 'YYYY-MM-DD HH:mm:ss',
-    messageFormat: '%time | %level | %logger - %msg'
-  };
+var plugin = new LoggerConsolePlugin(config);
+Logger.use(plugin);
 
-  var plugin = new LoggerConsolePlugin(config);
-  Logger.use(plugin);
-
-  var broker = new Broker({
-    backend: 'tcp://127.0.0.1:7776',
-    frontend: 'tcp://127.0.0.1:7777',
-    smi: {
-      // heartbeat interval in ms
-      heartbeat: 1000,
-      // max ttl for a service in ms
-      maxTTL: 2000,
-      // refresh service ttl update interval in ms
-      updateInterval: 500
-    }
-  });
-  broker.run();
-})();
+var broker = new Broker({
+  backend: 'tcp://127.0.0.1:7776',
+  frontend: 'tcp://127.0.0.1:7777',
+  smi: {
+    // heartbeat interval in ms
+    heartbeat: 1000,
+    // max ttl for a service in ms
+    maxTTL: 2000,
+    // refresh service ttl update interval in ms
+    updateInterval: 500
+  }
+});
+broker.run();
