@@ -15,9 +15,20 @@ The broker is slipt in three main components:
 * frontend: Receives requests and replies from clients;
 * smi: Service management interface, it handles service lifecycle with smi requests: up, down, heartbeat.
 
-## Running Broker binary
+## Running Broker
 
-    $ bin/zss-broker
+**ZeroMQ Install**
+
+You need to have [0MQ installed](http://zeromq.org/area:download).
+
+If you use MacOS just do
+
+    $ brew install zeromq
+
+**ZSS Broker Execution**
+
+    $ npm install
+    $ npm start
 
 
 ## Contributing
