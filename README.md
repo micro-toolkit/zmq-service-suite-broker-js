@@ -8,7 +8,7 @@
 
 [![NPM version](https://badge.fury.io/js/zmq-service-suite-broker.svg)](http://badge.fury.io/js/zmq-service-suite-broker)
 
-This project is a node-js broker implementation for [ZMQ Service Suite](http://pjanuario.github.io/zmq-service-suite-specs/).
+This project is a node-js broker implementation for [Micro toolkit](http://micro-toolkit.github.io/info/).
 
 The broker is slipt in three main components:
 * backend: Receives requests and replies from services;
