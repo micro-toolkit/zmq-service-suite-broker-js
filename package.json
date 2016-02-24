@@ -22,7 +22,7 @@
     "url": "http://shared-mind.tumblr.com"
   },
   "contributors": [],
-  "license": "BSD",
+  "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/pjanuario/zmq-service-suite-broker-js/issues"
   },
