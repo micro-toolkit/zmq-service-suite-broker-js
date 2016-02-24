@@ -39,7 +39,7 @@
     "logger-facade-nodejs": "0.0.3"
   },
   "dependencies": {
-    "lodash": "^2.4.1",
+    "lodash": "^4.5.1",
     "msgpack-js": "~0.3.0",
     "uuid": "~2.0.1",
     "zmq": "^2.7.0",
