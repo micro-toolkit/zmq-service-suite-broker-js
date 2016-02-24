@@ -35,7 +35,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "~0.4.1",
     "grunt-jasmine-node-coverage-validation": "0.0.4",
-    "pre-git": "0.0.16",
     "logger-facade-console-plugin-nodejs": "0.0.1",
     "logger-facade-nodejs": "0.0.2"
   },
@@ -52,11 +51,5 @@
   },
   "engines": {
     "node": ">=0.10.28"
-  },
-  "pre-commit": [
-    "npm test"
-  ],
-  "pre-push": [
-    "npm test"
-  ]
+  }
 }
