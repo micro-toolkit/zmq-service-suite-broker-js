@@ -41,9 +41,9 @@
   "dependencies": {
     "lodash": "^2.4.1",
     "msgpack-js": "~0.3.0",
-    "uuid": "~1.4.1",
+    "uuid": "~2.0.1",
     "zmq": "^2.7.0",
-    "zmq-service-suite-message": "0.0.2"
+    "zmq-service-suite-message": "0.0.3"
   },
   "peerDependencies": {
     "logger-facade-console-plugin-nodejs": "0.1.0",
