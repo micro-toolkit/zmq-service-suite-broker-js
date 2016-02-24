@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/pjanuario/zmq-service-suite-broker-js.git"
+    "url": "git://github.com/micro-toolkit/zmq-service-suite-broker-js.git"
   },
   "keywords": [
     "0MQ",
@@ -24,9 +24,9 @@
   "contributors": [],
   "license": "GPLv3",
   "bugs": {
-    "url": "https://github.com/pjanuario/zmq-service-suite-broker-js/issues"
+    "url": "https://github.com/micro-toolkit/zmq-service-suite-broker-js/issues"
   },
-  "homepage": "https://github.com/pjanuario/zmq-service-suite-broker-js",
+  "homepage": "https://github.com/micro-toolkit/zmq-service-suite-broker-js",
   "devDependencies": {
     "codeclimate-test-reporter": "0.0.3",
     "grunt": "^0.4.5",
