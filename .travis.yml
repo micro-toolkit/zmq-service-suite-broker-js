@@ -1,9 +1,13 @@
-sudo: false
+sudo: required
+dist: trusty
+cache:
+  apt: true
 language: node_js
 services:
 node_js:
   - 0.10
   - 0.12
+  - 4
 before_script:
   - npm install -g codeclimate-test-reporter
   - npm install -g grunt-cli
