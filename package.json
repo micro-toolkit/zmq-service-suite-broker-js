@@ -15,7 +15,9 @@
   "keywords": [
     "0MQ",
     "ZeroMQ",
-    "SOA"
+    "SOA",
+    "microservices",
+    "micro-toolkit"
   ],
   "author": {
     "name": "Pedro Januário",
