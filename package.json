@@ -36,8 +36,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "~0.4.1",
     "grunt-jasmine-node-coverage-validation": "0.0.4",
-    "logger-facade-console-plugin-nodejs": "0.1.0",
-    "logger-facade-nodejs": "0.0.3"
+    "logger-facade-console-plugin-nodejs": "^1.0.0",
+    "logger-facade-nodejs": "^1.0.0"
   },
   "dependencies": {
     "lodash": "^4.5.1",
@@ -47,8 +47,8 @@
     "zmq-service-suite-message": "0.0.3"
   },
   "peerDependencies": {
-    "logger-facade-console-plugin-nodejs": "0.1.0",
-    "logger-facade-nodejs": "0.0.3"
+    "logger-facade-console-plugin-nodejs": "^1.0.0",
+    "logger-facade-nodejs": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.28"
