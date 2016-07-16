@@ -1,0 +1,6 @@
+.git
+coverage
+node_modules
+spec
+.*
+Gruntfile.js
