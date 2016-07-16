@@ -1,4 +1,7 @@
 FROM node:4.4.7
+
+MANTAINER Micro Toolkit
+
 RUN apt-get update
 RUN apt-get install libzmq3-dev -y
 ADD . /app
