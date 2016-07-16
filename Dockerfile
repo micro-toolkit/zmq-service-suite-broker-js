@@ -4,8 +4,7 @@ RUN apt-get install libzmq3-dev -y
 ADD . /app
 WORKDIR /app
 
-RUN rm -rf node_modules
-RUN npm install
+RUN npm install --production
 EXPOSE 7777
 EXPOSE 7776
 CMD ["npm", "start"]
