@@ -14,8 +14,8 @@ var plugin = new LoggerConsolePlugin(config);
 Logger.use(plugin);
 
 var broker = new Broker({
-  backend: 'tcp://127.0.0.1:7776',
-  frontend: 'tcp://127.0.0.1:7777',
+  backend: 'tcp://0.0.0.0:7776',
+  frontend: 'tcp://0.0.0.0:7777',
   smi: {
     // heartbeat interval in ms
     heartbeat: 1000,
