@@ -4,6 +4,7 @@ cache:
   apt: true
 language: node_js
 services:
+  - docker
 node_js:
   - 0.10
   - 0.12
@@ -20,6 +21,7 @@ script:
   - npm test
 after_success:
   - codeclimate-test-reporter < ./coverage/lcov.info
+  - ./scripts/build_docker_image.sh
 addons:
   apt:
     packages:
@@ -27,3 +29,11 @@ addons:
   code_climate:
     repo_token:
       secure: NrRq7LF+3GAzLkEA79yZhhzi1F4jgJribXeaq+N9g5lL0PECYIscOOCbyDIw/ikCzLqkXumkGH8g1iD9a0zsDVktKoWwKIO9YX62LYa7tsiccawSxc5O+R4wfcuJGUZqDprapQw5RZxsp9mRkccvtVvHe1GSPR6ecylaSnzuFXA=
+env:
+  global:
+    ## DOKER CONFIGS
+    - secure: Uw3Dcw3CGqCl6mXBQahkmCDig2twkolYzctbSKlb/dBuoTTU+iTga4J1nvDEKE5teEmHUU1Kz7QClWEbI4y0Cr795T90sORHyLMhEint3MtCdH3xkmamt9HqT525bEGSMN2PIN8hjIBBAROmn4p4KSIEEFGKtGCba1joUm/9Onw=
+    - secure: YP+1lwT0H7qdCSaKRtNPr+5M3yZCSWF3/50WJvRFOxMX+wagtbQ2EcYLYKzGKxHW3GiI2UVl3bo+rW9UN8rbWEsCZ82e+4nDrDjUPI0oPYg9rC3f+9Cmy2Y462aN87cOKnTVPddfVq73LrIZf1TcUEcjx4RjJn3O5Yjpv0taBsw=
+    - secure: NLDLp8r0KnFUfkCZiXx8rqFdO9sogi69MpGZgXsCuECIpMoLtH0b3JFDN+vgPWs1+M6DWy+h9+gOSBsxla6K7ZKMmKH0Vts152UKQkKmGKqHHpjj8T6SdPG1NgKc/ZcvWqCU19Bb6IbS+KcUk8S2wl4kVhgPr/RzynAlK9x8Bnc=
+    ## DOKER CONFIGS
+    - COMMIT=${TRAVIS_COMMIT::8}
