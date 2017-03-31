@@ -30,10 +30,10 @@
   },
   "homepage": "https://github.com/micro-toolkit/zmq-service-suite-broker-js",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-bump": "0.7.0",
+    "grunt": "^1.0.1",
+    "grunt-bump": "0.8.0",
     "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-env": "~0.4.1",
     "grunt-jasmine-node-coverage-validation": "0.0.4",
     "logger-facade-console-plugin-nodejs": "^1.0.0",
@@ -42,7 +42,7 @@
   "dependencies": {
     "lodash": "^4.5.1",
     "msgpack-js": "~0.3.0",
-    "uuid": "~2.0.1",
+    "uuid": "~3.0.1",
     "zmq": "2.15.x",
     "zmq-service-suite-message": "0.0.3"
   },
