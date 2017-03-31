@@ -1,6 +1,6 @@
 {
   "name": "zmq-service-suite-broker",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "0MQ Service oriented Suite - Broker",
   "main": "index.js",
   "scripts": {
