@@ -1,10 +1,9 @@
+var Logger = require('logger-facade-nodejs'),
+    Message = require('zmq-service-suite-message'),
+    uuid = require('uuid'),
+    rewire = require('rewire');
+
 describe("ServiceManagementInterface", function(){
-
-  var Logger = require('logger-facade-nodejs'),
-      Message = require('zmq-service-suite-message'),
-      uuid = require('uuid'),
-      SMI = require('../../lib/smi');
-
   var target;
 
   var config = {
@@ -21,7 +20,6 @@ describe("ServiceManagementInterface", function(){
   beforeEach(function(){
     spyOn(uuid, 'v1').andReturn("uuid");
     log = Logger.getLogger('SMISpec');
-    spyOn(Logger, 'getLogger').andReturn(log);
 
     // TODO: set on helpers for all tests
     // issue with clearTimeout/clearInterval: https://github.com/mhevery/jasmine-node/issues/276
@@ -47,6 +45,8 @@ describe("ServiceManagementInterface", function(){
 
     jasmine.Clock.useMock();
 
+    var SMI = rewire('../../lib/smi');
+    SMI.__set__('log', log);
     target = new SMI(config);
   });
 
