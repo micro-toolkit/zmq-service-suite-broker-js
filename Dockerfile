@@ -1,9 +1,8 @@
-FROM node:4.4.7
+FROM node:6-alpine
 
 MAINTAINER Micro Toolkit
 
-RUN apt-get update
-RUN apt-get install libzmq3-dev -y
+RUN apk add --no-cache make gcc g++ python zeromq zeromq-dev
 ADD . /app
 WORKDIR /app
 
