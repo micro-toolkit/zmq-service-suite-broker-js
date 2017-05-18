@@ -7,6 +7,8 @@ ADD . /app
 WORKDIR /app
 
 RUN npm install --production
+
 EXPOSE 7777
 EXPOSE 7776
+
 CMD ["npm", "start"]
