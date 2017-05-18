@@ -1,4 +1,5 @@
 if [ "$TRAVIS_BRANCH" == "master" ]; then
+  /bin/bash echo "NODE VERSION ${TRAVIS_NODE_VERSION}"
   /bin/bash echo "Pushing to DockerHub..."
   docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   export REPO=microtoolkit/broker
