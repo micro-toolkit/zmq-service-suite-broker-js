@@ -98,14 +98,14 @@ describe('Frontend', function(){
         var validToken = "v4l1d0k3n";
 
         beforeEach(function() {
-          var tokenConfig = _.merge({ token: validToken }, config)
+          var tokenConfig = _.merge({ token: validToken }, config);
           
           target = new Frontend(tokenConfig, smi);
         });
 
         describe('invalid token', function(){
           it('returns status 500', function(done){
-            frames[HEADERS_FRAME] = msgpack.encode({ token: 'abc '})
+            frames[HEADERS_FRAME] = msgpack.encode({ token: 'abc '});
 
             socketMock.on = function(type, callback){
               if(type === 'message'){
@@ -125,7 +125,7 @@ describe('Frontend', function(){
         });
 
         describe('valid token', function(){
-          it('should carry on', function() {
+          it('should carry on', function(done) {
             frames[HEADERS_FRAME] = msgpack.encode({ token: validToken });
 
             socketMock.on = function(type, callback){
