@@ -1,3 +1,5 @@
+echo "BRANCH ${TRAVIS_BRANCH}"
+
 if [ "$TRAVIS_BRANCH" == "master" ]; then
   echo "NODE VERSION ${TRAVIS_NODE_VERSION}"
   echo "Pushing to DockerHub..."
