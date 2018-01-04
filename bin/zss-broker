@@ -22,7 +22,7 @@ var broker = new Broker({
     // max ttl for a service in ms
     maxTTL: 2000,
     // refresh service ttl update interval in ms
-    updateInterval: 500
+    updateInterval: 250
   }
 });
 broker.run();
