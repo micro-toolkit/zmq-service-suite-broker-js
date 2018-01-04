@@ -1,6 +1,6 @@
 if [ "$TRAVIS_BRANCH" == "master" ]; then
-  /bin/bash echo "NODE VERSION ${TRAVIS_NODE_VERSION}"
-  /bin/bash echo "Pushing to DockerHub..."
+  echo "NODE VERSION ${TRAVIS_NODE_VERSION}"
+  echo "Pushing to DockerHub..."
   docker login -u $DOCKER_USER -p $DOCKER_PASS
   export REPO=microtoolkit/broker
   export TAG=latest
@@ -9,5 +9,5 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
   docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   docker push $REPO
 else
-  /bin/bash echo "Docker image is built on master only"
+  echo "Docker image is built on master only"
 fi
