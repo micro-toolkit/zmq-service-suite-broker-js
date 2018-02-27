@@ -5,9 +5,10 @@ var LoggerConsolePlugin = require('logger-facade-console-plugin-nodejs');
 
 // this is the default config
 var config = {
-  level: 'info',
-  timeFormat: 'YYYY-MM-DD HH:mm:ss',
-  messageFormat: '%time | %level | %logger - %msg'
+  level: process.env.MICRO_BROKER_LOG_LEVEL || 'info',
+  timeFormat: process.env.MICRO_BROKER_LOG_TIMEFORMAT || 'YYYY-MM-DD HH:mm:ss.SSS',
+  messageFormat: '%time | %level | %logger - %msg',
+  json: process.env.MICRO_BROKER_LOG_JSON || false
 };
 
 var plugin = new LoggerConsolePlugin(config);
