@@ -11,7 +11,7 @@ describe("ServiceManagementInterface", function(){
     // heartbeat interval in ms
     heartbeat: 100,
     // max ttl for a service in ms
-    maxTTL: 200,
+    maxTTL: 300,
     // refresh service ttl update interval in ms
     updateInterval: 100
   };
@@ -67,6 +67,8 @@ describe("ServiceManagementInterface", function(){
       // trigger first ttl services refresh
       jasmine.Clock.tick(config.updateInterval);
       // trigger second ttl services refresh
+      jasmine.Clock.tick(config.updateInterval);
+      // trigger third ttl services refresh
       jasmine.Clock.tick(config.updateInterval);
 
       // service should not be registered
@@ -218,11 +220,29 @@ describe("ServiceManagementInterface", function(){
           expect(target.up(up).status).toBe(500);
         });
 
+        it('service should be removed on next interval only', function() {
+          // trigger first ttl services refresh
+          jasmine.Clock.tick(config.updateInterval);
+          // trigger second ttl services refresh
+          jasmine.Clock.tick(config.updateInterval);
+          // refresh ttl
+          target.heartbeat(heartbeat);
+          // trigger third ttl services refresh
+          jasmine.Clock.tick(config.updateInterval);
+          // trigger fourth ttl services refresh
+          jasmine.Clock.tick(config.updateInterval);
+
+          var result = target.down(down);
+          expect(result.status).toBe(200);
+        });
+
         it('twice does not invalidate next heartbeat from being send', function() {
           target.heartbeat(heartbeat);
           target.heartbeat(heartbeat);
 
           // trigger first ttl services refresh
+          jasmine.Clock.tick(config.updateInterval);
+          // trigger second ttl services refresh
           jasmine.Clock.tick(config.updateInterval);
           // trigger second ttl services refresh
           jasmine.Clock.tick(config.updateInterval);
