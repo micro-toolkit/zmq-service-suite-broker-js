@@ -31,6 +31,18 @@ If you use MacOS just do
     $ npm install
     $ npm start
 
+# Environment variables
+
+The broker binary can be configured with some environment variables:
+
+MICRO_BROKER_LOG_LEVEL - Specifies the log level used, defaults to 'info'
+MICRO_BROKER_LOG_TIMEFORMAT - Specifies the log time format used, defaults to 'YYYY-MM-DD HH:mm:ss.SSS'
+MICRO_BROKER_LOG_JSON - Specifies if json log format is used, defaults to false
+MICRO_BROKER_BE_ADDR - Specifies the broker backend socket address, defaults to 'tcp://0.0.0.0:7776'
+MICRO_BROKER_FE_ADDR - Specifies the broker frontend socket address, defaults to 'tcp://0.0.0.0:7777'
+MICRO_BROKER_HEARTBEAT - Specifies the broker heartbeat interval used by services, defaults to 1000
+MICRO_BROKER_MAX_TTL - Specifies the broker max ttl for each service optimal is 2xHEARTBEAT, defaults to 2000
+MICRO_BROKER_UPDATE_INT - Specifies the broker update interval to check service ttl, defaults to 500
 
 ## Contributing
 
