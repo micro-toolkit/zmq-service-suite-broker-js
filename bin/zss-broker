@@ -14,16 +14,22 @@ var config = {
 var plugin = new LoggerConsolePlugin(config);
 Logger.use(plugin);
 
+function getIntOrDefault(val, default) {
+  var num = parseInt(val, 10)
+  if (num) { return num; }
+  return default;
+}
+
 var broker = new Broker({
-  backend: 'tcp://0.0.0.0:7776',
-  frontend: 'tcp://0.0.0.0:7777',
+  backend: process.env.MICRO_BROKER_BE_ADDR || 'tcp://0.0.0.0:7776',
+  frontend: process.env.MICRO_BROKER_FE_ADDR || 'tcp://0.0.0.0:7777',
   smi: {
     // heartbeat interval in ms
-    heartbeat: 1000,
+    heartbeat: getIntOrDefault(process.env.MICRO_BROKER_HEARTBEAT, 1000),
     // max ttl for a service in ms
-    maxTTL: 2000,
+    maxTTL: getIntOrDefault(process.env.MICRO_BROKER_MAX_TTL, 2000),
     // refresh service ttl update interval in ms
-    updateInterval: 250
+    updateInterval: getIntOrDefault(process.env.MICRO_BROKER_UPDATE_INT, 500)
   }
 });
 broker.run();
