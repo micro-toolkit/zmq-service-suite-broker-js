@@ -1,5 +1,5 @@
 {
-  "name": "zmq-service-suite-broker",
+  "name": "zmq-service-suite-broker-tokenized",
   "version": "0.1.3",
   "description": "0MQ Service oriented Suite - Broker",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/micro-toolkit/zmq-service-suite-broker-js.git"
+    "url": "git://github.com/ISEngineering/zmq-service-suite-broker-js.git"
   },
   "keywords": [
     "0MQ",
     "ZeroMQ",
     "SOA",
     "microservices",
-    "micro-toolkit"
+    "ISEngineering"
   ],
   "author": {
     "name": "Pedro Januário",
@@ -26,9 +26,9 @@
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micro-toolkit/zmq-service-suite-broker-js/issues"
+    "url": "https://github.com/ISEngineering/zmq-service-suite-broker-js/issues"
   },
-  "homepage": "https://github.com/micro-toolkit/zmq-service-suite-broker-js",
+  "homepage": "https://github.com/ISEngineering/zmq-service-suite-broker-js",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-bump": "0.8.0",

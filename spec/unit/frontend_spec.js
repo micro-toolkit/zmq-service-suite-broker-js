@@ -5,7 +5,8 @@ describe('Frontend', function(){
       zmq = require('zmq'),
       msgpack = require('msgpack-js'),
       Frontend = require('../../lib/frontend'),
-      SMI = require('../../lib/smi');
+      SMI = require('../../lib/smi'),
+      _ = require('lodash');
 
 
   var IDENTITY_FRAME = 0,
@@ -92,6 +93,59 @@ describe('Frontend', function(){
           msgpack.encode("data")
         ];
       });
+
+      describe('protected with token', function(){
+        var validToken = "v4l1d0k3n";
+
+        beforeEach(function() {
+          var tokenConfig = _.merge({ token: validToken }, config);
+          
+          target = new Frontend(tokenConfig, smi);
+        });
+
+        describe('invalid token', function(){
+          it('returns status 500', function(done){
+            frames[HEADERS_FRAME] = msgpack.encode({ token: 'abc '});
+
+            socketMock.on = function(type, callback){
+              if(type === 'message'){
+                callback.apply(null, frames);
+              }
+            };
+
+            socketMock.send = function(frames){
+              expect(frames[STATUS_FRAME]).toBe(500);
+              done();
+            };
+
+            spyOn(zmq, 'socket').andReturn(socketMock);
+
+            target.run();
+          });
+        });
+
+        describe('valid token', function(){
+          it('should carry on', function(done) {
+            frames[HEADERS_FRAME] = msgpack.encode({ token: validToken });
+
+            socketMock.on = function(type, callback){
+              if(type === 'message'){
+                callback.apply(null, frames);
+              }
+            };
+    
+            socketMock.send = function(frames){
+              expect(frames[STATUS_FRAME]).not.toBe(500);
+              done();
+            };
+
+            spyOn(zmq, 'socket').andReturn(socketMock);
+
+            target.run();
+          });
+        });
+      });
+
       describe('with error', function(){
 
         describe('on zmq error', function(){
