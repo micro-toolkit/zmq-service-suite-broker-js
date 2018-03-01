@@ -32,4 +32,22 @@ var broker = new Broker({
     updateInterval: getIntOrDefault(process.env.MICRO_BROKER_UPDATE_INT, 500)
   }
 });
+
+function close(exitSignal) {
+  broker.stop();
+
+  // logging is deferred, to prevent losing log information we should exit
+  // on next available execution
+  setImmediate(function () { process.exit(exitSignal) });
+}
+
+process.on('uncaughtException', function (err) {
+  log.error(err, 'The application exit due to an uncaught exception, reson: %s',
+    err.message);
+  close(1);
+});
+
+process.on('SIGINT', close);
+process.on('SIGTERM', close);
+
 broker.run();
