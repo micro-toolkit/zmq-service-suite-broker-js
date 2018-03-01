@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-broker
+  labels:
+    micro: broker
+spec:
+  ports:
+  - name: fe
+    port: 7777
+    targetPort: 7777
+  - name: be
+    port: 7776
+    targetPort: 7776
+  clusterIP: None
+  selector:
+    micro: broker
