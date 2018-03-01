@@ -1,0 +1,27 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: micro-broker
+  labels:
+    micro: broker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        micro: broker
+    spec:
+      containers:
+      - name: micro-broker
+        image: microtoolkit/broker:latest
+        resources:
+          limits:
+            cpu: 200m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        envFrom:
+        - configMapRef:
+            name: micro-config

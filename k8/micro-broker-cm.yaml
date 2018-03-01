@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: micro-config
+data:
+  MICRO_BROKER_LOG_LEVEL: info
+  MICRO_BROKER_LOG_TIMEFORMAT: YYYY-MM-DD HH:mm:ss.SSS
+  MICRO_BROKER_LOG_JSON: 'true'
+  MICRO_BROKER_BE_ADDR: tcp://0.0.0.0:7776
+  MICRO_BROKER_FE_ADDR: tcp://0.0.0.0:7777
+  MICRO_BROKER_HEARTBEAT: '1000'
+  MICRO_BROKER_MAX_TTL: '2000'
+  MICRO_BROKER_UPDATE_INT: '500'
