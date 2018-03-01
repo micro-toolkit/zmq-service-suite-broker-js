@@ -14,10 +14,10 @@ var config = {
 var plugin = new LoggerConsolePlugin(config);
 Logger.use(plugin);
 
-function getIntOrDefault(val, default) {
+function getIntOrDefault(val, defaultVal) {
   var num = parseInt(val, 10)
   if (num) { return num; }
-  return default;
+  return defaultVal;
 }
 
 var broker = new Broker({
