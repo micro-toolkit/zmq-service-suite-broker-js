@@ -220,7 +220,9 @@ describe('Frontend', function(){
         target.backendSendCallback = backendCallbackSpy;
         target.run();
         frames.unshift("id");
-        expect(backendCallbackSpy).toHaveBeenCalledWith(frames);
+        expect(backendCallbackSpy).toHaveBeenCalledWith(
+          jasmine.objectContaining({4: "RID"})
+        );
       });
     });
 
