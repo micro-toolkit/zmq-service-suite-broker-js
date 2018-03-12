@@ -418,12 +418,11 @@ describe('Backend', function(){
         null,
         null,
         null,
+        msgpack.encode({}),
+        msgpack.encode({}),
         null,
-        null,
-        null,
-        null
+        msgpack.encode({})
       ];
-
       spyOn(zmq, 'socket').andReturn(socketMock);
       spyOn(socketMock, 'send');
 
@@ -432,19 +431,7 @@ describe('Backend', function(){
 
     it('sends request to socket', function(){
       target.send(frames);
-
-      var expected = [
-        null,
-        null,
-        null,
-        "REQ",
-        null,
-        null,
-        null,
-        null,
-        null
-      ];
-      expect(socketMock.send).toHaveBeenCalledWith(expected);
+      expect(socketMock.send).toHaveBeenCalledWith(jasmine.objectContaining({3: "REQ"}));
     });
 
     it('logs request info', function(){

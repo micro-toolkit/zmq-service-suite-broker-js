@@ -261,10 +261,10 @@ describe('Frontend', function(){
         null,
         "REQ",
         null,
+        msgpack.encode({}),
+        msgpack.encode({}),
         null,
-        null,
-        null,
-        null
+        msgpack.encode({})
       ];
 
       spyOn(zmq, 'socket').andReturn(socketMock);
@@ -275,18 +275,7 @@ describe('Frontend', function(){
 
     it('sends reply to socket', function(){
       target.send(frames);
-
-      var expected = [
-        null,
-        null,
-        "REP",
-        null,
-        null,
-        null,
-        null,
-        null
-      ];
-      expect(socketMock.send).toHaveBeenCalledWith(expected);
+      expect(socketMock.send).toHaveBeenCalledWith(jasmine.objectContaining({2: "REP"}));
     });
 
     it('logs reply info', function(){
