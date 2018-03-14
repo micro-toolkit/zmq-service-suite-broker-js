@@ -1,6 +1,6 @@
 {
   "name": "zmq-service-suite-broker",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "dependencies": {
     "base64-js": {
       "version": "0.0.2",
@@ -33,9 +33,9 @@
       "resolved": "https://registry.npmjs.org/logger-facade-nodejs/-/logger-facade-nodejs-2.0.0.tgz"
     },
     "moment": {
-      "version": "2.20.1",
+      "version": "2.21.0",
       "from": "moment@>=2.12.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/moment/-/moment-2.20.1.tgz"
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.21.0.tgz"
     },
     "msgpack-js": {
       "version": "0.3.0",
@@ -63,9 +63,9 @@
       "resolved": "https://registry.npmjs.org/zmq/-/zmq-2.15.3.tgz"
     },
     "zmq-service-suite-message": {
-      "version": "0.0.3",
-      "from": "zmq-service-suite-message@0.0.3",
-      "resolved": "https://registry.npmjs.org/zmq-service-suite-message/-/zmq-service-suite-message-0.0.3.tgz",
+      "version": "0.1.0",
+      "from": "zmq-service-suite-message@0.1.0",
+      "resolved": "https://registry.npmjs.org/zmq-service-suite-message/-/zmq-service-suite-message-0.1.0.tgz",
       "dependencies": {
         "uuid": {
           "version": "2.0.3",
