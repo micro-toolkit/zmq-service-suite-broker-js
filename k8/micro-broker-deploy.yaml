@@ -17,10 +17,10 @@ spec:
         image: microtoolkit/broker:latest
         resources:
           limits:
-            cpu: 200m
+            cpu: 1
             memory: 500Mi
           requests:
-            cpu: 100m
+            cpu: 250
             memory: 300Mi
         envFrom:
         - configMapRef:
