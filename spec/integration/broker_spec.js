@@ -1,7 +1,7 @@
 
 describe('Broker Integration', function(){
 
-  var zmq = require('zmq'),
+  var zmq = require('zeromq'),
       _ = require('lodash'),
       Logger = require('logger-facade-nodejs'),
       LoggerConsolePlugin = require('logger-facade-console-plugin-nodejs'),
