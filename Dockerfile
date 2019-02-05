@@ -2,7 +2,7 @@ FROM node:6-alpine
 
 ENV APP_DIR=/app
 
-COPY package.json npm-shrinkwrap.json $APP_DIR/
+COPY package.json package-lock.json $APP_DIR/
 RUN chown -R node:node $APP_DIR/*
 
 WORKDIR $APP_DIR

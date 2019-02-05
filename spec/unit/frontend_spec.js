@@ -2,7 +2,7 @@ describe('Frontend', function(){
 
   var Logger = require('logger-facade-nodejs'),
       Message = require('zmq-service-suite-message'),
-      zmq = require('zmq'),
+      zmq = require('zeromq'),
       msgpack = require('msgpack-js'),
       Frontend = require('../../lib/frontend'),
       SMI = require('../../lib/smi');

@@ -2,7 +2,7 @@ describe('Backend', function(){
 
   var Logger = require('logger-facade-nodejs'),
       Message = require('zmq-service-suite-message'),
-      zmq = require('zmq'),
+      zmq = require('zeromq'),
       Buffer = require('buffer').Buffer,
       msgpack = require('msgpack-js'),
       Backend = require('../../lib/backend'),

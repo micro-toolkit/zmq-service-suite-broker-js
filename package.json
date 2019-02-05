@@ -32,25 +32,25 @@
   "devDependencies": {
     "grunt": "^1.0.2",
     "grunt-bump": "0.8.0",
-    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-env": "~0.4.4",
     "grunt-jasmine-node-coverage-validation": "0.0.4"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
-    "msgpack-js": "~0.3.0",
-    "uuid": "~3.2.1",
-    "zmq": "2.15.x",
-    "zmq-service-suite-message": "0.1.0",
+    "lodash": "^4.17.11",
     "logger-facade-console-plugin-nodejs": "^2.0.0",
-    "logger-facade-nodejs": "^2.0.0"
+    "logger-facade-nodejs": "^2.0.0",
+    "msgpack-js": "~0.3.0",
+    "uuid": "~3.3.2",
+    "zeromq": "^5.1.0",
+    "zmq-service-suite-message": "1.0.0"
   },
   "peerDependencies": {
     "logger-facade-console-plugin-nodejs": "^2.0.0",
     "logger-facade-nodejs": "^2.0.0"
   },
   "engines": {
-    "node": ">=0.10.28"
+    "node": ">=6"
   }
 }
