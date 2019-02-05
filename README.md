@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/micro-toolkit/zmq-service-suite-broker-js.svg?branch=master)](https://travis-ci.org/micro-toolkit/zmq-service-suite-broker-js)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1db88a3fbf23c7377653/maintainability)](https://codeclimate.com/github/micro-toolkit/zmq-service-suite-broker-js/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1db88a3fbf23c7377653/test_coverage)](https://codeclimate.com/github/micro-toolkit/zmq-service-suite-broker-js/test_coverage)
-[![Dependency Status](https://gemnasium.com/micro-toolkit/zmq-service-suite-broker-js.svg)](https://gemnasium.com/micro-toolkit/zmq-service-suite-broker-js)
 
 ## ZMQ Service Oriented Suite - Node-js Broker
 
